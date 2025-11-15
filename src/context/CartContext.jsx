@@ -1,3 +1,4 @@
+// src/context/CartContext.jsx
 import { createContext, useState } from 'react';
 import { initialCart } from '../data/pizzas';
 
@@ -39,9 +40,7 @@ export const CartProvider = ({ children }) => {
   // Función para decrementar la cantidad de un producto
   const decreaseQuantity = (id) => {
     setCart(cart.map(item =>
-      item.id === id && item.count > 1 
-        ? { ...item, count: item.count - 1 } 
-        : item
+      item.id === id ? { ...item, count: item.count - 1 } : item
     ).filter(item => item.count > 0));
   };
 
@@ -61,4 +60,4 @@ export const CartProvider = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
-};
+}
